@@ -1,5 +1,25 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// if(!process.env.NODE_ENV)
+// {
+//   require('dotenv').config({path: 'src//config//.env'});
+// }
+// else
+// {
+//   require('dotenv').config({path: 'src//config//env.${process.env.NODE_ENV'});
+// }
+
+const dotenv = require('dotenv').config({ path: 'src//config//.env'});
+const dotenvQA = require('dotenv').config({ path: 'src//config//.env.qa'});
+const dotenvUAT = require('dotenv').config({ path: 'src//config//.env.uat'});
+
+if (dotenv.error) {
+  // Something went wrong
+  console.error(dotenv.error);
+} else {
+  // Log parsed values
+  console.log(dotenv.parsed);
+}
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
